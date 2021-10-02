@@ -27,12 +27,12 @@ namespace DocumentosBrasileiros.IE
 
             if (!inscricaoEstadual.StartsWith("24")) return false;
 
-            if (!_tiposEmpresa.Contains(int.Parse(inscricaoEstadual.Substring(2, 1)))) return false;
+            //if (!_tiposEmpresa.Contains(int.Parse(inscricaoEstadual.Substring(2, 1)))) return false;
 
 
             string inscricaoSemDigito = inscricaoEstadual.Substring(0, 8);
 
-            return inscricaoSemDigito + new DigitoVerificador().ObterDigitoMod11(inscricaoSemDigito, _pesos).ToString() == inscricaoEstadual;
+            return inscricaoSemDigito + DigitoVerificador.ObterDigitoMod11(inscricaoSemDigito, _pesos).ToString() == inscricaoEstadual;
         }
 
         public string GerarFake()
@@ -54,7 +54,7 @@ namespace DocumentosBrasileiros.IE
                 inscricaoSemDigito += rnd.Next(0, 9).ToString();
             }
 
-            return inscricaoSemDigito + new DigitoVerificador().ObterDigitoMod11(inscricaoSemDigito, _pesos).ToString();
+            return inscricaoSemDigito + DigitoVerificador.ObterDigitoMod11(inscricaoSemDigito, _pesos).ToString();
 
         }
     }

@@ -42,7 +42,7 @@ namespace DocumentosBrasileiros.IE
 
             string inscricaoSemDigitoSemT = inscricaoEstadual.Substring(0, 2) + inscricaoEstadual.Substring(4, 6);
 
-            string digito = new DigitoVerificador().ObterDigitoMod11(inscricaoSemDigitoSemT, peso).ToString();
+            string digito = DigitoVerificador.ObterDigitoMod11(inscricaoSemDigitoSemT, peso).ToString();
 
             return inscricaoEstadual.EndsWith(digito);
         }
@@ -51,7 +51,7 @@ namespace DocumentosBrasileiros.IE
 
             string inscricaoSemDigito = inscricaoEstadual.Substring(0, 8);
 
-            string digito = new DigitoVerificador().ObterDigitoMod11(inscricaoSemDigito, peso).ToString();
+            string digito = DigitoVerificador.ObterDigitoMod11(inscricaoSemDigito, peso).ToString();
 
             return inscricaoEstadual.EndsWith(digito);
         }
@@ -66,7 +66,7 @@ namespace DocumentosBrasileiros.IE
             }
             double _random = rnd.NextDouble();
 
-            string digito = new DigitoVerificador().ObterDigitoMod11(inscricaoSemDigitoSemT, peso).ToString();
+            string digito = DigitoVerificador.ObterDigitoMod11(inscricaoSemDigitoSemT, peso).ToString();
 
             string t = "";
             if (_random < 0.33) t = T[0];

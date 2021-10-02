@@ -15,19 +15,31 @@ namespace DocumentosBrasileiros.IE
         {
             if (inscricaoEstadual.Length != 9 && inscricaoEstadual.Length != 14) return false;
 
-            string inscricaoSemDigito = inscricaoEstadual.Substring(0, inscricaoEstadual.Length - 2);
+            string inscricaoSemDigito;
+            if (inscricaoEstadual.Length == 9)
+                inscricaoSemDigito = inscricaoEstadual.Substring(0, inscricaoEstadual.Length - 2);
+            else
+                inscricaoSemDigito = inscricaoEstadual.Substring(0, inscricaoEstadual.Length - 1);
+
             return obterInscricaoComDigitos(inscricaoSemDigito) == inscricaoEstadual;
         }
 
         private string obterInscricaoComDigitos(string inscricaoSemDigito)
         {
             string d1 = "", d2 = "";
+            if (inscricaoSemDigito.Length < 13)
+            {
+                string zeroEsquerda = string.Concat(Enumerable.Repeat("0", peso.Length - inscricaoSemDigito.Length));
+                d1 = DigitoVerificador.ObterDigitoMod11(zeroEsquerda + inscricaoSemDigito, peso).ToString();
 
-            string zeroEsquerda = string.Concat(Enumerable.Repeat("0", peso.Length - inscricaoSemDigito.Length));
-            d1 = new DigitoVerificador().ObterDigitoMod11(zeroEsquerda + inscricaoSemDigito, peso).ToString();
-
-            zeroEsquerda = string.Concat(Enumerable.Repeat("0", (peso.Length - 1) - inscricaoSemDigito.Length));
-            d2 = new DigitoVerificador().ObterDigitoMod11(zeroEsquerda + inscricaoSemDigito + d1, peso).ToString();
+                zeroEsquerda = string.Concat(Enumerable.Repeat("0", (peso.Length - 1) - inscricaoSemDigito.Length));
+                d2 = DigitoVerificador.ObterDigitoMod11(zeroEsquerda + inscricaoSemDigito + d1, peso).ToString();
+            }
+            else 
+            {
+                string zeroEsquerda = string.Concat(Enumerable.Repeat("0", peso.Length - inscricaoSemDigito.Length));
+                d1 = DigitoVerificador.ObterDigitoMod11Alt(zeroEsquerda + inscricaoSemDigito, peso).ToString();
+            }
 
             return inscricaoSemDigito + d1 + d2;
         }

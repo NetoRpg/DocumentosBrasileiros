@@ -34,9 +34,8 @@ namespace DocumentosBrasileiros
 
         private string ObterDigitos(string cnpj)
         {
-            var digitoVerificador = new DigitoVerificador();
-            int d1 = digitoVerificador.ObterDigitoMod11("0" + cnpj, _pesos);
-            int d2 = digitoVerificador.ObterDigitoMod11(cnpj + d1.ToString(), _pesos);
+            int d1 = DigitoVerificador.ObterDigitoMod11("0" + cnpj, _pesos);
+            int d2 = DigitoVerificador.ObterDigitoMod11(cnpj + d1.ToString(), _pesos);
 
             return d1.ToString() + d2.ToString();
         }

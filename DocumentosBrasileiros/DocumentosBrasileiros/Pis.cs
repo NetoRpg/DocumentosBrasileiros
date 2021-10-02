@@ -34,7 +34,7 @@ namespace DocumentosBrasileiros
 
         private string ObterDigitos(string pis)
         {
-            return new DigitoVerificador().ObterDigitoMod11(pis, _pesos).ToString();
+            return DigitoVerificador.ObterDigitoMod11(pis, _pesos).ToString();
         }
     }
 }

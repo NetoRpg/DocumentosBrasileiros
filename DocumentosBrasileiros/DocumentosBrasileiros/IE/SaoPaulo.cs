@@ -35,6 +35,7 @@ namespace DocumentosBrasileiros.IE
             }
             if (str.Equals(valor))
                 return true;
+
             return false;
         }
 

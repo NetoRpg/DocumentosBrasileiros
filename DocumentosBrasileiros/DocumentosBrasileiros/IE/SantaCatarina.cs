@@ -19,7 +19,7 @@ namespace DocumentosBrasileiros.IE
             string digitoEsperado = ie.Substring(8, 1);
             string inscricaoSemDigito = ie.Substring(0, 8);
 
-            return new DigitoVerificador().ObterDigitoMod11(inscricaoSemDigito, peso).ToString() == digitoEsperado;
+            return DigitoVerificador.ObterDigitoMod11(inscricaoSemDigito, peso).ToString() == digitoEsperado;
         }
 
 
@@ -33,7 +33,7 @@ namespace DocumentosBrasileiros.IE
                 inscricaoSemDigito += rnd.Next(0, 9).ToString();
             }
 
-            string digito = new DigitoVerificador().ObterDigitoMod11(inscricaoSemDigito, peso).ToString();
+            string digito = DigitoVerificador.ObterDigitoMod11(inscricaoSemDigito, peso).ToString();
 
             return inscricaoSemDigito + digito;
         }

@@ -45,7 +45,7 @@ namespace DocumentosBrasileiros
         {
             var reversoSemDigito = string.Join("", renavam.ToCharArray().Reverse());
 
-            var mod11 = new DigitoVerificador().ObterMod(reversoSemDigito, _pesos);
+            var mod11 = DigitoVerificador.ObterMod(reversoSemDigito, _pesos);
 
             var digito = 11 - mod11;
 

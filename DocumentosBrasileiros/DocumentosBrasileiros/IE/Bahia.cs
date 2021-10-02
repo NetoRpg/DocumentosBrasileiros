@@ -51,12 +51,12 @@ namespace DocumentosBrasileiros.IE
 
             inscricaoSemDigito = inscricaoSemDigito.PadLeft(_pesoDigito2.Length, '0');
 
-            var resto = new DigitoVerificador().ObterMod(inscricaoSemDigito, _pesoDigito2, mod);
+            var resto = DigitoVerificador.ObterMod(inscricaoSemDigito, _pesoDigito2, mod);
             int digito2 = resto == 0
                 ? 0
                 : mod - resto;
 
-            var resto2 = new DigitoVerificador().ObterMod($"{inscricaoSemDigito + digito2}", _pesoDigito1, mod);
+            var resto2 = DigitoVerificador.ObterMod($"{inscricaoSemDigito + digito2}", _pesoDigito1, mod);
 
             int digito1 = resto2 == 0
                 ? 0
@@ -70,12 +70,12 @@ namespace DocumentosBrasileiros.IE
 
             inscricaoSemDigito = inscricaoSemDigito.PadLeft(_pesoDigito2.Length, '0');
 
-            var resto = new DigitoVerificador().ObterMod(inscricaoSemDigito, _pesoDigito2, mod);
+            var resto = DigitoVerificador.ObterMod(inscricaoSemDigito, _pesoDigito2, mod);
             int digito2 = resto == 0 || resto == 1
                 ? 0
                 : mod - resto;
 
-            var resto2 = new DigitoVerificador().ObterMod($"{inscricaoSemDigito + digito2}", _pesoDigito1, mod);
+            var resto2 = DigitoVerificador.ObterMod($"{inscricaoSemDigito + digito2}", _pesoDigito1, mod);
 
             int digito1 = resto2 == 0 || resto2 == 1
                 ? 0

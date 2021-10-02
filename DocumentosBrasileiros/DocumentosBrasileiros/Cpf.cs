@@ -28,9 +28,8 @@ namespace DocumentosBrasileiros
 
         private string ObterDigitos(string cpf)
         {
-            DigitoVerificador digitoVerifador = new DigitoVerificador();
-            int d1 = digitoVerifador.ObterDigitoMod11("0" + cpf, _pesos);
-            int d2 = digitoVerifador.ObterDigitoMod11(cpf + d1.ToString(), _pesos);
+            int d1 = DigitoVerificador.ObterDigitoMod11("0" + cpf, _pesos);
+            int d2 = DigitoVerificador.ObterDigitoMod11(cpf + d1.ToString(), _pesos);
 
             return d1.ToString() + d2.ToString();
         }

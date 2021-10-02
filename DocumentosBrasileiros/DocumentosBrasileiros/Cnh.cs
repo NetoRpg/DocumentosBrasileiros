@@ -35,11 +35,10 @@ namespace DocumentosBrasileiros
 
         private string ObterDigitos(string cnh)
         {
-            var validadorDigito = new DigitoVerificador();
-            int d1 = validadorDigito.ObterMod(cnh, _peso1);
+            int d1 = DigitoVerificador.ObterMod(cnh, _peso1);
             if (d1 > 9 || d1 == 1) d1 = 0;
 
-            int d2 = validadorDigito.ObterMod(cnh, _peso2);
+            int d2 = DigitoVerificador.ObterMod(cnh, _peso2);
             if (d2 > 9 || d2 == 1) d2 = 0;
 
             return d1.ToString() + d2.ToString();

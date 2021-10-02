@@ -18,7 +18,7 @@ namespace DocumentosBrasileiros.IE
 
             string inscricaoSemDigito = inscricaoEstadual.Substring(0, 8);
 
-            string digito1 = new DigitoVerificador().ObterDigitoMod11(inscricaoSemDigito, peso).ToString();
+            string digito1 = DigitoVerificador.ObterDigitoMod11(inscricaoSemDigito, peso).ToString();
 
             return inscricaoSemDigito + digito1 == inscricaoEstadual;
         }
@@ -32,7 +32,7 @@ namespace DocumentosBrasileiros.IE
                 inscricaoSemDigito += rnd.Next(0, 9).ToString();
             }
 
-            return inscricaoSemDigito + new DigitoVerificador().ObterDigitoMod11(inscricaoSemDigito, peso).ToString();
+            return inscricaoSemDigito + DigitoVerificador.ObterDigitoMod11(inscricaoSemDigito, peso).ToString();
         }
 
     }

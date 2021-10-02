@@ -17,9 +17,9 @@ namespace DocumentosBrasileiros.IE
             string inscricaoSemDigito = inscricaoEstadual.Substring(0, 11);
 
 
-            string digito1 = new DigitoVerificador().ObterDigitoMod11("0" + inscricaoSemDigito, _peso).ToString();
+            string digito1 = DigitoVerificador.ObterDigitoMod11("0" + inscricaoSemDigito, _peso).ToString();
 
-            string digito2 = new DigitoVerificador().ObterDigitoMod11(inscricaoSemDigito + digito1, _peso).ToString();
+            string digito2 = DigitoVerificador.ObterDigitoMod11(inscricaoSemDigito + digito1, _peso).ToString();
 
             return inscricaoSemDigito + digito1 + digito2 == inscricaoEstadual;
         }
@@ -28,8 +28,8 @@ namespace DocumentosBrasileiros.IE
         {
             string inscricaoSemDigito = "01".RandomNumbers(9);
 
-            string digito1 = new DigitoVerificador().ObterDigitoMod11("0" + inscricaoSemDigito, _peso).ToString();
-            string digito2 = new DigitoVerificador().ObterDigitoMod11(inscricaoSemDigito + digito1, _peso).ToString();
+            string digito1 = DigitoVerificador.ObterDigitoMod11("0" + inscricaoSemDigito, _peso).ToString();
+            string digito2 = DigitoVerificador.ObterDigitoMod11(inscricaoSemDigito + digito1, _peso).ToString();
 
             return inscricaoSemDigito + digito1 + digito2;
         }

@@ -16,7 +16,7 @@ namespace DocumentosBrasileiros.IE
             if (!inscricaoEstadual.StartsWith("20")) return false;
 
             string inscricaoSemDigito = inscricaoEstadual.Substring(0, inscricaoEstadual.Length - 1);
-            string digito = new DigitoVerificador().ObterDigitoMod11((inscricaoEstadual.Length == 9 ? "0" : "") + inscricaoSemDigito, peso).ToString();
+            string digito = DigitoVerificador.ObterDigitoMod11((inscricaoEstadual.Length == 9 ? "0" : "") + inscricaoSemDigito, peso).ToString();
 
             return
                 inscricaoEstadual ==
@@ -34,7 +34,7 @@ namespace DocumentosBrasileiros.IE
             {
                 inscricaoSemDigito += rnd.Next(0, 9).ToString();
             }
-            string digito = new DigitoVerificador().ObterDigitoMod11((qtdeCaracteres == 9 ? "0" : "") + inscricaoSemDigito, peso).ToString();
+            string digito = DigitoVerificador.ObterDigitoMod11((qtdeCaracteres == 9 ? "0" : "") + inscricaoSemDigito, peso).ToString();
             return inscricaoSemDigito + digito;
         }
     }

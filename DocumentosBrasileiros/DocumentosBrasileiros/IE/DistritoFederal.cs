@@ -1,5 +1,6 @@
 ﻿using System;
 using DocumentosBrasileiros.Enums;
+using DocumentosBrasileiros.Helpers;
 using DocumentosBrasileiros.Interfaces;
 
 namespace DocumentosBrasileiros.IE
@@ -12,25 +13,13 @@ namespace DocumentosBrasileiros.IE
         public bool Validar(string inscricaoEstadual)
         {
             if (inscricaoEstadual.Length != 13) return false;
-            if (!inscricaoEstadual.StartsWith("07")) return false;
+            //if (!inscricaoEstadual.StartsWith("07")) return false;
 
             string inscricaoSemDigito = inscricaoEstadual.Substring(0, 11);
-            string digito1 = ObterDigito("0" + inscricaoSemDigito).ToString();
-            string digito2 = ObterDigito(inscricaoSemDigito + digito1).ToString();
+            string digito1 = DigitoVerificador.ObterDigitoMod11("0" + inscricaoSemDigito, peso).ToString();
+            string digito2 = DigitoVerificador.ObterDigitoMod11(inscricaoSemDigito + digito1, peso).ToString();
 
             return inscricaoSemDigito + digito1 + digito2 == inscricaoEstadual;
-        }
-
-        private int ObterDigito(string valor)
-        {
-            int soma = 0;
-            for (int i = 0; i < peso.Length; ++i)
-                soma += peso[i] * int.Parse(valor[i].ToString());
-
-            int digito = 11 - soma % 11;
-            if (digito > 9)
-                digito = 0;
-            return digito;
         }
 
         public string GerarFake()
@@ -42,8 +31,8 @@ namespace DocumentosBrasileiros.IE
                 inscricaoSemDigito += rnd.Next(0, 9).ToString();
             }
 
-            string d1 = ObterDigito("0" + inscricaoSemDigito).ToString();
-            string d2 = ObterDigito(inscricaoSemDigito + d1).ToString();
+            string d1 = DigitoVerificador.ObterDigitoMod11("0" + inscricaoSemDigito, peso).ToString();
+            string d2 = DigitoVerificador.ObterDigitoMod11(inscricaoSemDigito + d1, peso).ToString();
             return inscricaoSemDigito + d1 + d2;
         }
     }
