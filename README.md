@@ -1,3 +1,5 @@
+[![.NET](https://github.com/NetoRpg/documentosbrasileiros/actions/workflows/dotnet.yml/badge.svg)](https://github.com/NetoRpg/documentosbrasileiros/actions/workflows/dotnet.yml)
+
 # DocumentosBrasileiros
 Validação e criação de números de documentos. Contempla Inscrição Estadual, CPF, CNPJ, PIS, CNH e Renavam
 
